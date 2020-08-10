@@ -21,5 +21,9 @@ class MemeCreatorViewController: UIViewController {
         super.viewWillAppear(animated)
         self.memeImageView?.center = self.view.center
     }
-
+    
+    
+    @IBAction func pickAnImage(_ sender: Any) {
+    }
+    
 }
