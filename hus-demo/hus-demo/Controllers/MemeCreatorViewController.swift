@@ -46,6 +46,7 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
     } else if let  image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
         memeImageView?.image = image
            
+        
        }
     
 }
