@@ -18,13 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil);
         self.window?.rootViewController = storyBoard.instantiateInitialViewController()
         self.window?.makeKeyAndVisible()
-        
-        _ = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
-        
         return true
-        
-            
-    }
-
 }
 
+}

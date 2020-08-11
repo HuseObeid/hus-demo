@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeCreatorViewController: UIViewController {
+class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     @IBOutlet var memeImageView : UIImageView?
     
@@ -20,10 +20,33 @@ class MemeCreatorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.memeImageView?.center = self.view.center
+        _ = UIToolbar(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 44.0)))
+        
     }
     
+    func pickImageFromSource(_ source: UIImagePickerController.SourceType){
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = source
+        present(pickerController, animated: true, completion: nil)
+    }
     
     @IBAction func pickAnImage(_ sender: Any) {
+        pickImageFromSource(.photoLibrary)
+        
     }
     
+     func imagePickerController(_:UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+           
+    if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+        memeImageView?.image = image
+               
+               
+               
+    } else if let  image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        memeImageView?.image = image
+           
+       }
+    
+}
 }
