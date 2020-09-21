@@ -8,18 +8,45 @@
 
 import UIKit
 
-class MemeCreatorViewController: UIViewController {
+class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDelegate & UINavigationControllerDelegate) {
 
-    @IBOutlet var memeImageView : UIImageView?
+    @IBOutlet var memeView : UIView?
+    @IBOutlet weak var toolBar: UIToolbar?
+    
+    private var pickerController: UIImagePickerController?
     
     override func viewDidLoad() {
         self.title = "Meme Demo"
         super.viewDidLoad()
+        pickerController?.delegate = self
+        pickerController?.sourceType = .photoLibrary
+        pickerController?.sourceType = .camera
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.memeImageView?.center = self.view.center
+        self.memeView?.center = self.view.center
+    }
+
+    // MARK: UI Actions
+    
+    @IBAction func pickAnImage(_ sender: Any) {
+    }
+    
+    @IBAction func pickAnImageFromCamera(_ sender: Any) {
+    }
+    
+    // MARK: Image Picker Deleagte
+    
+    
+    private func ImagePickerController(_:UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    }
+
+    // MARK: Helpers
+    
+    private func presentImagePicker() {
+        guard let viewController = pickerController else { return }
+        present(viewController, animated: true, completion: nil)
     }
 
 }
