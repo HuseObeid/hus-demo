@@ -18,22 +18,28 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     override func viewDidLoad() {
         self.title = "Meme Demo"
         super.viewDidLoad()
+        pickerController = UIImagePickerController()
         pickerController?.delegate = self
         pickerController?.sourceType = .photoLibrary
-        pickerController?.sourceType = .camera
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.memeView?.center = self.view.center
+        
     }
 
     // MARK: UI Actions
     
     @IBAction func pickAnImage(_ sender: Any) {
+        presentImagePicker()
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
+        presentImagePicker()
+        
     }
     
     // MARK: Image Picker Deleagte

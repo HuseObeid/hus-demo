@@ -14,4 +14,14 @@ class MemeView: UIView {
     @IBOutlet var topTextField: UITextField?
     @IBOutlet var bottomTextFiled: UITextField?
     
+
+
+func update(model: MemeModel) {
+    imageView?.image = model.image
+    topTextField?.text = model.topText
+    bottomTextFiled?.text = model.bottomText
+    
+}
+    
+    
 }
