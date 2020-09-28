@@ -21,7 +21,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         pickerController = UIImagePickerController()
         pickerController?.delegate = self
         pickerController?.sourceType = .photoLibrary
-        
+      
         
     }
     
@@ -29,8 +29,14 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         super.viewWillAppear(animated)
         self.memeView?.center = self.view.center
         
+        
     }
-
+    
+    func setupTextField(_ textField: UITextField, defaultText: String) {
+        textField.text = defaultText
+        textField.textAlignment = .center
+    }
+    
     // MARK: UI Actions
     
     @IBAction func pickAnImage(_ sender: Any) {
@@ -41,6 +47,9 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         presentImagePicker()
         
     }
+    
+
+        
     
     // MARK: Image Picker Deleagte
     
