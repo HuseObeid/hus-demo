@@ -21,19 +21,25 @@ class MemeView: UIView, UITextFieldDelegate {
     }
     
     func setup() {
-        self.topTextField?.adjustsFontSizeToFitWidth = true
-        self.topTextField?.minimumFontSize = 11.0
-        self.bottomTextFiled?.adjustsFontSizeToFitWidth = true
-        self.bottomTextFiled?.minimumFontSize = 11.0
-        updateTextField(topTextField!, defaultText: "TOP")
-        updateTextField(bottomTextFiled!, defaultText: "BOTTOM")
+        setupTextField(topTextField!, defaultText: "TOP")
+        setupTextField(bottomTextFiled!, defaultText: "BOTTOM")
     }
     
-    private func updateTextField(_ textField: UITextField, defaultText: String) {
+    private func setupTextField(_ textField: UITextField, defaultText: String) {
         textField.text = defaultText
         textField.textAlignment = .center
+        textField.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40.0)
+        textField.textColor = UIColor.white
         textField.delegate = self
-        topTextField?.delegate = self
-        bottomTextFiled?.delegate = self
+    }
+    
+    // MARK: TextField Delegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = nil
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true;
     }
 }
