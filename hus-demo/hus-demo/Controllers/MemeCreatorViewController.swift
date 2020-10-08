@@ -21,15 +21,11 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         pickerController = UIImagePickerController()
         pickerController?.delegate = self
         pickerController?.sourceType = .photoLibrary
-      
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.memeView?.center = self.view.center
-        
-        
     }
     
     func setupTextField(_ textField: UITextField, defaultText: String) {
@@ -45,14 +41,9 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         presentImagePicker()
-        
     }
     
-
-        
-    
     // MARK: Image Picker Deleagte
-    
     
     private func ImagePickerController(_:UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
     }

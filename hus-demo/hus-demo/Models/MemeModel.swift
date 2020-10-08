@@ -19,7 +19,6 @@ class MemeModel: NSObject {
         self.bottomText = bottomText
         self.image = image 
     }
-
 }
 
 
