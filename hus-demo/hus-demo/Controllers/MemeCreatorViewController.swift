@@ -10,7 +10,7 @@ import UIKit
 
 class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDelegate & UINavigationControllerDelegate) {
 
-    @IBOutlet var memeView : UIView?
+    @IBOutlet var memeView : MemeView?
     @IBOutlet weak var toolBar: UIToolbar?
     
     private var pickerController: UIImagePickerController?
@@ -21,18 +21,14 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         pickerController = UIImagePickerController()
         pickerController?.delegate = self
         pickerController?.sourceType = .photoLibrary
+        self.memeView?.setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.memeView?.center = self.view.center
     }
-    
-    func setupTextField(_ textField: UITextField, defaultText: String) {
-        textField.text = defaultText
-        textField.textAlignment = .center
-    }
-    
+        
     // MARK: UI Actions
     
     @IBAction func pickAnImage(_ sender: Any) {

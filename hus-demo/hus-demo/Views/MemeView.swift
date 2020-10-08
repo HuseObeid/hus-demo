@@ -20,23 +20,16 @@ class MemeView: UIView, UITextFieldDelegate {
         bottomTextFiled?.text = model.bottomText
     }
     
-    func viewWillAppear(_ animated: Bool) {
+    func setup() {
         self.topTextField?.adjustsFontSizeToFitWidth = true
         self.topTextField?.minimumFontSize = 11.0
         self.bottomTextFiled?.adjustsFontSizeToFitWidth = true
         self.bottomTextFiled?.minimumFontSize = 11.0
-    }
-
-    func viewDidLoad() {
-        setupTextField(topTextField!, defaultText: "TOP")
-        setupTextField(bottomTextFiled!, defaultText: "BOTTOM")
+        updateTextField(topTextField!, defaultText: "TOP")
+        updateTextField(bottomTextFiled!, defaultText: "BOTTOM")
     }
     
-    func setupTextFieldFont() {
-        
-    }
-    
-    func setupTextField(_ textField: UITextField, defaultText: String) {
+    private func updateTextField(_ textField: UITextField, defaultText: String) {
         textField.text = defaultText
         textField.textAlignment = .center
         textField.delegate = self
