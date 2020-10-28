@@ -18,7 +18,6 @@ class MemeView: UIView, UITextFieldDelegate {
         imageView?.image = model.image
         topTextField?.text = model.topText
         bottomTextFiled?.text = model.bottomText
-       
     }
     
     func setup() {
@@ -34,17 +33,14 @@ class MemeView: UIView, UITextFieldDelegate {
         textField.delegate = self
     }
     
-    let memeTextAttributes: [NSAttributedString.Key: Any] = [
+    private let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.foregroundColor: UIColor.black,
         NSAttributedString.Key.strokeWidth: 3
     ]
     
     private var strokecolor = UIColor.black
     
-   
-    
     // MARK: TextField Delegate
-    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = nil
@@ -57,13 +53,6 @@ class MemeView: UIView, UITextFieldDelegate {
     func hideKeyboard() {
         bottomTextFiled?.resignFirstResponder()
     }
-    
-
-        
-        
-        
-    
-
 }
 
 

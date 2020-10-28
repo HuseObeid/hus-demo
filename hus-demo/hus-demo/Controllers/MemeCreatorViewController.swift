@@ -10,7 +10,7 @@ import UIKit
 
 class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDelegate & UINavigationControllerDelegate) {
 
-    @IBOutlet var memeView : MemeView?
+    @IBOutlet var memeView : MemeView!
     @IBOutlet weak var toolBar: UIToolbar?
     
     private var pickerController: UIImagePickerController?
@@ -21,7 +21,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         pickerController = UIImagePickerController()
         pickerController?.delegate = self
         pickerController?.sourceType = .photoLibrary
-        self.memeView?.setup()
+        self.memeView!.setup()
       
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),
         name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -30,18 +30,11 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-        
-    
-   
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.memeView?.center = self.view.center
-        
+        self.memeView!.center = self.view.center
     }
         
-    
-    
     // MARK: UI Actions
     
     @IBAction func pickAnImage(_ sender: Any) {
@@ -64,20 +57,14 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         present(viewController, animated: true, completion: nil)
     }
 
-    
-  
     @objc func keyboardWillShow(notification: NSNotification) {
-        guard notification.userInfo != nil else {return}
-        if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
-        }
+        let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        guard let keyboardFrame = keyboardValue?.cgRectValue else { return }
+        
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        
-    
-    
-}
-
-
+        self.memeView!.center = self.view.center
+    }
 }
 
