@@ -13,12 +13,24 @@ class MemeModel: NSObject {
     var topText: String?
     var bottomText: String?
     
+    
+    
+    
     init(topText: String?, bottomText: String?, image: UIImage?) {
         super.init()
         self.topText = topText
         self.bottomText = bottomText
-        self.image = image 
+        self.image = image
+        
     }
+    
+    
+
 }
+
+
+
+
+
 
 
