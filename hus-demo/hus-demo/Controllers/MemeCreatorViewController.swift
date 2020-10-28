@@ -47,9 +47,16 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     
     // MARK: Image Picker Deleagte
     
-    private func ImagePickerController(_:UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("Image Picked")
+        picker.dismiss(animated: true, completion: nil)
     }
-
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("Image Picker Cancelled")
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: Helpers
     
     private func presentImagePicker() {
