@@ -22,6 +22,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         pickerController?.delegate = self
         pickerController?.sourceType = .photoLibrary
         self.memeView!.setup()
+        
       
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),
         name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -49,7 +50,10 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("Image Picked")
-        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
+        memeView!.update(model: MemeModel(topText: "", bottomText: "", image: image))
+        pickerController?.dismiss(animated: true, completion: nil)
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -68,10 +72,33 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         guard let keyboardFrame = keyboardValue?.cgRectValue else { return }
         
+        _ = self.memeView.frame.origin.y == 0; do {
+            self.view.frame.origin.y = 100 - keyboardFrame.height
+            
+        }
+        
+       
+                
     }
+
     
     @objc func keyboardWillHide(notification: NSNotification) {
         self.memeView!.center = self.view.center
-    }
+        let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        guard let keyboardFrame = keyboardValue?.cgRectValue else { return }
+        _ = self.memeView.frame.origin.y == 0; do {
+            self.view.frame.origin.y -= keyboardFrame.height
+            
+        }
+        
 }
+    
+    
+    @IBAction func shareMeme(_ sender: Any) {
+    
+    }
+
+}
+    
+
 

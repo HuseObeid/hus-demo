@@ -13,6 +13,14 @@ class MemeModel: NSObject {
     var topText: String?
     var bottomText: String?
     
+struct meme {
+        
+    var topTextField: String
+    var bottomTextField: String
+    var firstImage: UIImage
+    var memedImage: UIImage
+}
+    
     init(topText: String?, bottomText: String?, image: UIImage?) {
         super.init()
         self.topText = topText
@@ -21,6 +29,8 @@ class MemeModel: NSObject {
         
     }
 }
+
+
 
 
 

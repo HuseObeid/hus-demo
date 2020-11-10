@@ -47,6 +47,8 @@ class MemeView: UIView, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        topTextField?.resignFirstResponder()
+        bottomTextFiled?.resignFirstResponder()
         return true;
     }
 
