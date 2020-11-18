@@ -12,13 +12,14 @@ class MemeModel: NSObject {
     var image: UIImage?
     var topText: String?
     var bottomText: String?
+    var memedImage: UIImageView?
     
 struct meme {
         
     var topTextField: String
     var bottomTextField: String
-    var firstImage: UIImage
-    var memedImage: UIImage
+    let firstImage: UIImage
+    let memedImage: UIImage
 }
     
     init(topText: String?, bottomText: String?, image: UIImage?) {
