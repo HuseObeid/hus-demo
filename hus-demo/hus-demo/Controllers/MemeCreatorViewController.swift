@@ -9,7 +9,7 @@
 import UIKit
 
 class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDelegate & UINavigationControllerDelegate) {
-
+    
     @IBOutlet var memeView : MemeView!
     @IBOutlet weak var toolBar: UIToolbar?
     
@@ -23,12 +23,12 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         pickerController?.sourceType = .photoLibrary
         self.memeView!.setup()
         
-      
+        
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),
-        name: UIResponder.keyboardWillShowNotification, object: nil)
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),
-        name: UIResponder.keyboardWillHideNotification, object: nil)
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +37,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         
         
     }
-        
+    
     // MARK: UI Actions
     
     @IBAction func pickAnImage(_ sender: Any) {
@@ -70,7 +70,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         guard let viewController = pickerController else { return }
         present(viewController, animated: true, completion: nil)
     }
-
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         guard let keyboardFrame = keyboardValue?.cgRectValue else { return }
@@ -80,7 +80,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
             
         }
     }
-
+    
     
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -90,10 +90,11 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         _ = self.memeView.frame.origin.y == 0; do {
             self.view.frame.origin.y -= keyboardFrame.height
             
-    }
+        }
         
-}
-
+    }
+    
+    
     func generateMemedImage() -> UIImage {
         
         self.toolBar?.isHidden = true
@@ -104,7 +105,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-
+        
         self.toolBar?.isHidden = false
         self.navigationController?.isNavigationBarHidden = true
         
@@ -115,12 +116,24 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     }
     
     @IBAction func shareMeme(_ sender: Any) {
-        let activityController = UIActivityViewController(activityItems: [memeView.imageView!], applicationActivities: nil)
-        present(activityController, animated: true, completion: nil)
+        /* let activityController = UIActivityViewController(activityItems: [memeView.imageView!], applicationActivities: nil)
+         present(activityController, animated: true, completion: nil)*/
         
-    
+        let memedImage: UIImage = generateMemedImage()
+        let shareSheet = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        shareSheet.completionWithItemsHandler = { (_, completed, _, _) in
+            if (completed) {
+               
+                
+            }
+        }
+        present(shareSheet, animated: true, completion: nil)
     }
-
+    
+    
+    
 }
+
+
 
 
