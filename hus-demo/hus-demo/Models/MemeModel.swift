@@ -21,15 +21,11 @@ class MemeModel: NSObject {
         var memedImage: UIImage
     }
     
-    
     init(topText: String?, bottomText: String?, image: UIImage?) {
         super.init()
         self.topText = topText
         self.bottomText = bottomText
         self.image = image
-        
-        
-        
     }
 }
 

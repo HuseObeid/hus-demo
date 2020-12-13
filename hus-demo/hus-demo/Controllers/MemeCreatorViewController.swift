@@ -12,8 +12,9 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     
     @IBOutlet var memeView : MemeView!
     @IBOutlet weak var toolBar: UIToolbar?
-    
     @IBOutlet var cameraButton: UIView!
+    
+    @IBOutlet var keyboardConstraint : NSLayoutConstraint!
     
     private var pickerController: UIImagePickerController?
     
@@ -25,7 +26,6 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         pickerController?.sourceType = .photoLibrary
         self.memeView!.setup()
         
-        
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -34,9 +34,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.memeView!.center = self.view.center
-       
+        super.viewWillAppear(animated)       
     }
     
     // MARK: UI Actions
@@ -49,8 +47,6 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         presentImagePicker()
         pickerController?.sourceType = .camera
     }
-    
- 
     
     // MARK: Image Picker Deleagte
     
@@ -77,26 +73,16 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         guard let keyboardFrame = keyboardValue?.cgRectValue else { return }
-        
-        _ = self.memeView.frame.origin.y == 0; do {
-            self.view.frame.origin.y = 100 - keyboardFrame.height
-            
-        }
+        self.keyboardConstraint.priority = UILayoutPriority(rawValue: 900.0);
+        self.keyboardConstraint.constant = keyboardFrame.size.height
     }
-    
-    
     
     @objc func keyboardWillHide(notification: NSNotification) {
         self.memeView!.center = self.view.center
         let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-        guard let keyboardFrame = keyboardValue?.cgRectValue else { return }
-        _ = self.memeView.frame.origin.y == 0; do {
-            self.view.frame.origin.y -= keyboardFrame.height
-            
-        }
-        
+        guard let _ = keyboardValue?.cgRectValue else { return }
+        self.keyboardConstraint.priority = UILayoutPriority(rawValue: 500.0)
     }
-    
     
     func generateMemedImage() -> UIImage {
         
