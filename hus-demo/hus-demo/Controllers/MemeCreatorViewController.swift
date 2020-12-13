@@ -13,6 +13,8 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     @IBOutlet var memeView : MemeView!
     @IBOutlet weak var toolBar: UIToolbar?
     
+    @IBOutlet var cameraButton: UIView!
+    
     private var pickerController: UIImagePickerController?
     
     override func viewDidLoad() {
@@ -34,8 +36,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.memeView!.center = self.view.center
-        
-        
+       
     }
     
     // MARK: UI Actions
@@ -48,6 +49,8 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         presentImagePicker()
         pickerController?.sourceType = .camera
     }
+    
+ 
     
     // MARK: Image Picker Deleagte
     
@@ -98,7 +101,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     func generateMemedImage() -> UIImage {
         
         self.toolBar?.isHidden = true
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationBar.isHidden = true
         
         
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -107,13 +110,16 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         UIGraphicsEndImageContext()
         
         self.toolBar?.isHidden = false
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationBar.isHidden = false 
         
         
         return memedImage
         
         
     }
+    
+ 
+        
     
     @IBAction func shareMeme(_ sender: Any) {
         /* let activityController = UIActivityViewController(activityItems: [memeView.imageView!], applicationActivities: nil)
@@ -123,6 +129,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         let shareSheet = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         shareSheet.completionWithItemsHandler = { (_, completed, _, _) in
             if (completed) {
+                /*self.save()*/
                
                 
             }
