@@ -29,7 +29,7 @@ class MemeView: UIView, UITextFieldDelegate {
         textField.text = defaultText
         textField.textAlignment = .center
         textField.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40.0)
-        textField.textColor = UIColor.white
+        textField.textColor = UIColor.black
         textField.delegate = self
     }
     

@@ -32,11 +32,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)       
-    }
-    
+        
     // MARK: UI Actions
     
     @IBAction func pickAnImage(_ sender: Any) {
@@ -55,7 +51,6 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
         memeView!.update(model: MemeModel(topText: "", bottomText: "", image: image))
         pickerController?.dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -83,48 +78,6 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         guard let _ = keyboardValue?.cgRectValue else { return }
         self.keyboardConstraint.priority = UILayoutPriority(rawValue: 500.0)
     }
-    
-    func generateMemedImage() -> UIImage {
-        
-        self.toolBar?.isHidden = true
-        self.navigationController?.navigationBar.isHidden = true
-        
-        
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        self.toolBar?.isHidden = false
-        self.navigationController?.navigationBar.isHidden = false 
-        
-        
-        return memedImage
-        
-        
-    }
-    
- 
-        
-    
-    @IBAction func shareMeme(_ sender: Any) {
-        /* let activityController = UIActivityViewController(activityItems: [memeView.imageView!], applicationActivities: nil)
-         present(activityController, animated: true, completion: nil)*/
-        
-        let memedImage: UIImage = generateMemedImage()
-        let shareSheet = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
-        shareSheet.completionWithItemsHandler = { (_, completed, _, _) in
-            if (completed) {
-                /*self.save()*/
-               
-                
-            }
-        }
-        present(shareSheet, animated: true, completion: nil)
-    }
-    
-    
-    
 }
 
 
