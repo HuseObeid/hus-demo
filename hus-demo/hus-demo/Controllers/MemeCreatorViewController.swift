@@ -32,16 +32,27 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-        
+    
     // MARK: UI Actions
     
+    func pickImageFromSource(_ source: UIImagePickerController.SourceType){
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = source
+        present(pickerController, animated: true, completion: nil)
+    }
+    
     @IBAction func pickAnImage(_ sender: Any) {
-        presentImagePicker()
+        /*presentImagePicker()*/
+        pickImageFromSource(.photoLibrary)
+        
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        presentImagePicker()
-        pickerController?.sourceType = .camera
+        /*presentImagePicker()
+         pickerController?.sourceType = .camera*/
+        pickImageFromSource(.camera)
+        
     }
     
     // MARK: Image Picker Deleagte
@@ -58,6 +69,38 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         picker.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: Sharing
+    
+    @IBAction func shareMeme(_ sender: Any) {
+        let memedImage: UIImage = self.memeView.image()!
+        let shareSheet = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil); shareSheet.completionWithItemsHandler = {  (_, completed, _, _) in
+            
+            if (completed) {
+                self.save()
+                
+                
+                
+                
+                
+            }
+        }
+        present(shareSheet, animated: true, completion: nil)
+        
+    }
+    
+    
+    func generatedMemedImage() -> UIImage {
+        toolBar!.isHidden = true
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        UIGraphicsEndImageContext()
+        return memedImage
+        
+    }
     // MARK: Helpers
     
     private func presentImagePicker() {

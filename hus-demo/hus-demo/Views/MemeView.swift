@@ -32,7 +32,15 @@ class MemeView: UIView, UITextFieldDelegate {
         textField.textColor = UIColor.black
         textField.delegate = self
     }
-    
+    func image() -> UIImage? {
+      
+        UIGraphicsBeginImageContext(self.bounds.size)
+        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        let memedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return memedImage
+    }
     private let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.foregroundColor: UIColor.black,
         NSAttributedString.Key.strokeWidth: 3
