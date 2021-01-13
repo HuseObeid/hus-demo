@@ -43,7 +43,7 @@ class MemeView: UIView, UITextFieldDelegate {
     }
     private let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.foregroundColor: UIColor.black,
-        NSAttributedString.Key.strokeWidth: 3
+        NSAttributedString.Key.strokeWidth: -3
     ]
     
     private var strokecolor = UIColor.black
@@ -64,5 +64,4 @@ class MemeView: UIView, UITextFieldDelegate {
         bottomTextFiled?.resignFirstResponder()
     }
 }
-
 

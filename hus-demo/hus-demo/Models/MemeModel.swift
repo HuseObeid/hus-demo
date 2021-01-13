@@ -14,11 +14,13 @@ class MemeModel: NSObject {
     var bottomText: String?
     var memedImage: UIImageView?
     
+    
     struct Meme {
         var topTextField: String
         var bottomTextFiled: String
         var firstImage: UIImage
-        var memedImage: UIImage
+        var memedImage: UIImageView
+        
     }
     
     init(topText: String?, bottomText: String?, image: UIImage?) {
@@ -28,12 +30,3 @@ class MemeModel: NSObject {
         self.image = image
     }
 }
-
-
-
-
-
-
-
-
-

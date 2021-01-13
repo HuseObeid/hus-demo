@@ -3,8 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key> NSPhotoLibraryAddUsageDescription</key>
-    
-	<string>saveImage</string>
+	<string>$(PRODUCT_NAME)trial</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -39,6 +38,12 @@
 	</array>
 	<key>Camera Usage Description</key>
 	<string>ALLOWCAMERA</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>$(PRODUCT_NAME)trial </string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME)trial </string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME)trial </string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

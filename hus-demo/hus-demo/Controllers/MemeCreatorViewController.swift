@@ -1,6 +1,6 @@
 //
 //  MemeCreatorViewController.swift
-//  hus-demo
+//  hus-dem0
 //
 //  Created by Adrian Domanico on 8/2/20.
 //  Copyright © 2020 Adrian Domanico. All rights reserved.
@@ -9,6 +9,8 @@
 import UIKit
 
 class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDelegate & UINavigationControllerDelegate) {
+    
+    
     
     @IBOutlet var memeView : MemeView!
     @IBOutlet weak var toolBar: UIToolbar?
@@ -71,24 +73,23 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     
     // MARK: Sharing
     
+    struct Meme {}
+    
+    func save() {
+        _ = Meme.self
+    }
+    
     @IBAction func shareMeme(_ sender: Any) {
         let memedImage: UIImage = self.memeView.image()!
         let shareSheet = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil); shareSheet.completionWithItemsHandler = {  (_, completed, _, _) in
-            
+            print("Completed!")
             if (completed) {
                 self.save()
-                
-                
-                
-                
-                
             }
         }
         present(shareSheet, animated: true, completion: nil)
         
     }
-    
-    
     func generatedMemedImage() -> UIImage {
         toolBar!.isHidden = true
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -121,8 +122,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         guard let _ = keyboardValue?.cgRectValue else { return }
         self.keyboardConstraint.priority = UILayoutPriority(rawValue: 500.0)
     }
+    
+    
 }
-
-
-
 
