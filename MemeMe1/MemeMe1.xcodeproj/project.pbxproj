@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		584F938224D798F2007C9A08 /* hus-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hus-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		584F938224D798F2007C9A08 /* MemeMe1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		584F938524D798F2007C9A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		584F938C24D798F2007C9A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		584F938E24D798F3007C9A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		584F937924D798F2007C9A08 = {
 			isa = PBXGroup;
 			children = (
-				584F938424D798F2007C9A08 /* hus-demo */,
+				584F938424D798F2007C9A08 /* MemeMe1 */,
 				584F938324D798F2007C9A08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		584F938324D798F2007C9A08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				584F938224D798F2007C9A08 /* hus-demo.app */,
+				584F938224D798F2007C9A08 /* MemeMe1.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		584F938424D798F2007C9A08 /* hus-demo */ = {
+		584F938424D798F2007C9A08 /* MemeMe1 */ = {
 			isa = PBXGroup;
 			children = (
 				87AD75EF2509235700622969 /* Views */,
@@ -69,7 +69,7 @@
 				584F939024D798F3007C9A08 /* LaunchScreen.storyboard */,
 				584F939324D798F3007C9A08 /* Info.plist */,
 			);
-			path = "hus-demo";
+			path = MemeMe1;
 			sourceTree = "<group>";
 		};
 		584F939924D79AC2007C9A08 /* Models */ = {
@@ -100,9 +100,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		584F938124D798F2007C9A08 /* hus-demo */ = {
+		584F938124D798F2007C9A08 /* MemeMe1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 584F939624D798F3007C9A08 /* Build configuration list for PBXNativeTarget "hus-demo" */;
+			buildConfigurationList = 584F939624D798F3007C9A08 /* Build configuration list for PBXNativeTarget "MemeMe1" */;
 			buildPhases = (
 				584F937E24D798F2007C9A08 /* Sources */,
 				584F937F24D798F2007C9A08 /* Frameworks */,
@@ -112,9 +112,9 @@
 			);
 			dependencies = (
 			);
-			name = "hus-demo";
+			name = MemeMe1;
 			productName = "hus-demo";
-			productReference = 584F938224D798F2007C9A08 /* hus-demo.app */;
+			productReference = 584F938224D798F2007C9A08 /* MemeMe1.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -132,7 +132,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 584F937D24D798F2007C9A08 /* Build configuration list for PBXProject "hus-demo" */;
+			buildConfigurationList = 584F937D24D798F2007C9A08 /* Build configuration list for PBXProject "MemeMe1" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -145,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				584F938124D798F2007C9A08 /* hus-demo */,
+				584F938124D798F2007C9A08 /* MemeMe1 */,
 			);
 		};
 /* End PBXProject section */
@@ -319,12 +319,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "hus-demo/Info.plist";
+				INFOPLIST_FILE = MemeMe1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "adomanico.hus-demo";
+				PRODUCT_BUNDLE_IDENTIFIER = HusseinObeid.MemeMe1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -336,12 +336,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "hus-demo/Info.plist";
+				INFOPLIST_FILE = MemeMe1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "adomanico.hus-demo";
+				PRODUCT_BUNDLE_IDENTIFIER = HusseinObeid.MemeMe1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -351,7 +351,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		584F937D24D798F2007C9A08 /* Build configuration list for PBXProject "hus-demo" */ = {
+		584F937D24D798F2007C9A08 /* Build configuration list for PBXProject "MemeMe1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				584F939424D798F3007C9A08 /* Debug */,
@@ -360,7 +360,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		584F939624D798F3007C9A08 /* Build configuration list for PBXNativeTarget "hus-demo" */ = {
+		584F939624D798F3007C9A08 /* Build configuration list for PBXNativeTarget "MemeMe1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				584F939724D798F3007C9A08 /* Debug */,

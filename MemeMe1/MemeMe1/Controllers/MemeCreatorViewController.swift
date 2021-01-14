@@ -14,7 +14,8 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
     
     @IBOutlet var memeView : MemeView!
     @IBOutlet weak var toolBar: UIToolbar?
-    @IBOutlet var cameraButton: UIView!
+    @IBOutlet var cameraButton: UILabel!
+    
     
     @IBOutlet var keyboardConstraint : NSLayoutConstraint!
     
@@ -26,6 +27,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         pickerController = UIImagePickerController()
         pickerController?.delegate = self
         pickerController?.sourceType = .photoLibrary
+        
         self.memeView!.setup()
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),
@@ -33,6 +35,10 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     // MARK: UI Actions
@@ -114,6 +120,7 @@ class MemeCreatorViewController: UIViewController, (UIImagePickerControllerDeleg
         guard let keyboardFrame = keyboardValue?.cgRectValue else { return }
         self.keyboardConstraint.priority = UILayoutPriority(rawValue: 900.0);
         self.keyboardConstraint.constant = keyboardFrame.size.height
+     
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {

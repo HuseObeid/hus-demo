@@ -3,7 +3,7 @@
 //  hus-demo
 //
 //  Created by Hussein Obeid on 2020-09-09.
-//  Copyright © 2020 Adrian Domanico. All rights reserved.
+//  Copyright © 2020 Hussein Obeid. All rights reserved.
 //
 
 import UIKit
